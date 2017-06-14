@@ -1,0 +1,89 @@
+﻿<template>
+    <div>
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title is-1">Calendar</h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="columns">
+                <div class="column"><a class="pagination-previous" v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
+                <div class="column has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
+                <div class="column has-text-right"><a class="pagination-next" v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
+            </div>
+            <div class="tile is-ancestor">
+                <div v-for="weekday in weekdays" class="tile card is-vertical is-hidden-mobile">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{weekday}}
+                        </p>
+                    </header>
+                </div>
+            </div>
+
+            <calendar-date :dates="dates" :events="events" :offset="0"></calendar-date>
+            <calendar-date :dates="dates" :events="events" :offset="7"></calendar-date>
+            <calendar-date :dates="dates" :events="events" :offset="14"></calendar-date>
+            <calendar-date :dates="dates" :events="events" :offset="21"></calendar-date>
+            <calendar-date :dates="dates" :events="events" :offset="28"></calendar-date>
+        </div>
+    </div>
+</template>
+
+<script>
+    import CalendarDate from "./buefy-calendar-date.vue"
+    Vue.component("calendar-date", CalendarDate);
+
+    const now = new moment(new Date().setDate(1));
+
+    function getEmptyDate() {
+        return { date: null, class: "is-hidden-mobile disabled" };
+    }
+
+    function getDates(start) {
+        const days = Array.apply(null, { length: moment().daysInMonth() })
+            .map(Number.call, Number)
+            .map(function (i) {
+                const d = start.clone().add(i, "days");
+                return { date: d.format("Do"), key: d.format("YYYY-MM-DD") };
+            });
+
+        var dates = new Array(start.day()).fill(getEmptyDate()).concat(days);
+        var length = dates.length;
+        dates.length = 36;
+        dates.fill(getEmptyDate(), length);
+
+        return dates;
+    }
+
+    export default {
+        data() {
+            return {
+                showDates: true,
+                currentMonth: now,
+                events: {
+                    "2017-06-01": [
+                        { title: "Rehearsal", url: "http://www.google.com" }
+                    ]
+                },
+                dates: getDates(now),
+                weekdays: [
+                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                ]
+            }
+        },
+        methods: {
+            previous: function (offset) {
+                this.currentMonth.subtract(1, "months");
+                this.dates = getDates(this.currentMonth);
+            },
+            next: function (offset) {
+                this.currentMonth.add(1, "months");
+                this.dates = getDates(this.currentMonth);
+            }
+        }
+    }
+</script>

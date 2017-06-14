@@ -1,0 +1,30 @@
+{
+  "name": "buefy-calendar",
+  "version": "1.0.0",
+  "description": "A beautiful, responsive calendar for Vue using the Bulma responsive framework",
+  "main": "buefy-calendar.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesheps/buefy-calendar.git"
+  },
+  "dependencies": {
+    "bulma": "0.4.2",
+    "buefy": "0.4.0"
+  },
+  "keywords": [
+    "bulma",
+    "VueJS",
+    "buefy",
+    "calendar",
+    "events"
+  ],
+  "author": "thesheps@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thesheps/buefy-calendar/issues"
+  },
+  "homepage": "https://github.com/thesheps/buefy-calendar#readme"
+}
