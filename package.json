@@ -1,6 +1,6 @@
 {
   "name": "buefy-calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A beautiful, responsive calendar for Vue using the Bulma responsive framework",
   "main": "buefy-calendar.vue",
   "scripts": {

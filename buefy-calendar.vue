@@ -1,35 +1,25 @@
 ﻿<template>
-    <div>
-        <section class="hero is-primary is-bold">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title is-1">Calendar</h1>
-                </div>
-            </div>
-        </section>
-
-        <div class="container">
-            <div class="columns">
-                <div class="column"><a class="pagination-previous" v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
-                <div class="column has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
-                <div class="column has-text-right"><a class="pagination-next" v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
-            </div>
-            <div class="tile is-ancestor">
-                <div v-for="weekday in weekdays" class="tile card is-vertical is-hidden-mobile">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            {{weekday}}
-                        </p>
-                    </header>
-                </div>
-            </div>
-
-            <calendar-date :dates="dates" :events="events" :offset="0"></calendar-date>
-            <calendar-date :dates="dates" :events="events" :offset="7"></calendar-date>
-            <calendar-date :dates="dates" :events="events" :offset="14"></calendar-date>
-            <calendar-date :dates="dates" :events="events" :offset="21"></calendar-date>
-            <calendar-date :dates="dates" :events="events" :offset="28"></calendar-date>
+    <div class="container">
+        <div class="columns">
+            <div class="column"><a class="pagination-previous" v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
+            <div class="column has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
+            <div class="column has-text-right"><a class="pagination-next" v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
         </div>
+        <div class="tile is-ancestor">
+            <div v-for="weekday in weekdays" class="tile card is-vertical is-hidden-mobile">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        {{weekday}}
+                    </p>
+                </header>
+            </div>
+        </div>
+
+        <calendar-date :dates="dates" :events="events" :offset="0"></calendar-date>
+        <calendar-date :dates="dates" :events="events" :offset="7"></calendar-date>
+        <calendar-date :dates="dates" :events="events" :offset="14"></calendar-date>
+        <calendar-date :dates="dates" :events="events" :offset="21"></calendar-date>
+        <calendar-date :dates="dates" :events="events" :offset="28"></calendar-date>
     </div>
 </template>
 
