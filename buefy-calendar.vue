@@ -50,15 +50,11 @@
     }
 
     export default {
+        props: ["events"],
         data() {
             return {
                 showDates: true,
                 currentMonth: now,
-                events: {
-                    "2017-06-01": [
-                        { title: "Rehearsal", url: "http://www.google.com" }
-                    ]
-                },
                 dates: getDates(now),
                 weekdays: [
                     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
