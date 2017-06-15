@@ -1,2 +1,2 @@
-import BuefyCalendar from './buefy-calendar.vue'
+import BuefyCalendar from './src/buefy-calendar.vue'
 export default BuefyCalendar
