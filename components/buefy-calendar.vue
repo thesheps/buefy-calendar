@@ -1,9 +1,9 @@
 ﻿<template>
     <div class="container">
         <div class="columns">
-            <div class="column"><a class="pagination-previous" v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
+            <div class="column has-text-left"><a v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
             <div class="column has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
-            <div class="column has-text-right"><a class="pagination-next" v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
+            <div class="column has-text-right"><a v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
         </div>
         <div class="tile is-ancestor">
             <div v-for="weekday in weekdays" class="tile card is-vertical is-hidden-mobile">
@@ -24,8 +24,8 @@
 </template>
 
 <script>
+    import moment from 'moment';
     import CalendarDate from "./buefy-calendar-date.vue"
-    Vue.component("calendar-date", CalendarDate);
 
     const now = new moment(new Date().setDate(1));
 
@@ -70,6 +70,9 @@
                 this.currentMonth.add(1, "months");
                 this.dates = getDates(this.currentMonth);
             }
+        },
+        components: {
+            'calendar-date': CalendarDate
         }
     }
 </script>
