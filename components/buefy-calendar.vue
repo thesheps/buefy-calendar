@@ -1,10 +1,17 @@
 ﻿<template>
     <div class="container">
-        <div class="columns">
-            <div class="column has-text-left"><a v-on:click="previous()"><i class="fa fa-chevron-left"></i></a></div>
+        <div class="columns is-hidden-mobile">
+            <div class="column has-text-left"><a v-on:click="previous()"><i class="fa button is-primary fa-chevron-left"></i></a></div>
             <div class="column has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
-            <div class="column has-text-right"><a v-on:click="next()"><i class="fa fa-chevron-right"></i></a></div>
+            <div class="column has-text-right"><a v-on:click="next()"><i class="fa button is-primary fa-chevron-right"></i></a></div>
         </div>
+
+        <div class="rows is-hidden-tablet">
+            <div class="row has-text-centered"><a v-on:click="previous()"><i class="button is-primary is-fullwidth fa fa-chevron-up"></i></a></div>
+            <div class="row has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
+            <div class="row has-text-centered"><a v-on:click="next()"><i class="button is-primary is-fullwidth fa fa-chevron-down"></i></a></div>
+        </div>
+
         <div class="tile is-ancestor">
             <div v-for="weekday in weekdays" class="tile card is-vertical is-hidden-mobile">
                 <header class="card-header">
@@ -65,10 +72,12 @@
             previous: function (offset) {
                 this.currentMonth.subtract(1, "months");
                 this.dates = getDates(this.currentMonth);
+                this.$emit('previous');
             },
             next: function (offset) {
                 this.currentMonth.add(1, "months");
                 this.dates = getDates(this.currentMonth);
+                this.$emit('next');
             }
         },
         components: {

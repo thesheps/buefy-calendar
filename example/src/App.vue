@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <calendar :events="events"></calendar>
+    <calendar :events="events" v-on:previous="previousMonth" v-on:next="nextMonth"></calendar>
   </div>
 </template>
 
@@ -20,6 +20,22 @@ export default {
               ]
           }
       }
+  },
+  methods: {
+    previousMonth: function() {
+      this.events = {
+        "2017-05-02": [
+            { title: "Rehearsal", url: "http://www.google.com" }
+        ]
+      }
+    },
+    nextMonth: function() {
+      this.events = {
+        "2017-06-02": [
+            { title: "Rehearsal", url: "http://www.google.com" }
+        ]
+      }
+    }
   }
 }
 
