@@ -8,7 +8,9 @@
 
         <div class="rows is-hidden-tablet">
             <div class="row has-text-centered"><a v-on:click="previous()"><i class="button is-primary is-fullwidth fa fa-chevron-up"></i></a></div>
+            <hr/>
             <div class="row has-text-centered"><h2 class="title is-2">{{currentMonth.format("MMMM YYYY")}}</h2></div>
+            <hr/>
             <div class="row has-text-centered"><a v-on:click="next()"><i class="button is-primary is-fullwidth fa fa-chevron-down"></i></a></div>
         </div>
 
