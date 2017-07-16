@@ -59,15 +59,20 @@
     }
 
     export default {
-        props: ["events"],
+        props: {
+          events: Object,
+          weekdays: {
+            type: Array,
+            default: [
+              "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+            ],
+          }
+        },
         data() {
             return {
                 showDates: true,
                 currentMonth: now,
                 dates: getDates(now),
-                weekdays: [
-                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-                ]
             }
         },
         methods: {
